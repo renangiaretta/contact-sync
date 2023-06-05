@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             const { token } = await response.data
             api.defaults.headers.authorization = `Bearer ${token}`
             localStorage.setItem('contact-sync:token', token)
+            setLoading(false)
             navigate('home')
         } catch (error) {
             console.error(error)

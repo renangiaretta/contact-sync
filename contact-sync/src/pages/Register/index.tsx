@@ -13,8 +13,7 @@ const Register = () => {
 
     const registerCustomer = async (data: RegisterData) => {
         try {
-            const response = await api.post('customers/', data)
-            console.log(response)
+            await api.post('customers/', data)
         } catch (error) {
             console.error(error)
         }

@@ -18,7 +18,7 @@ interface IProfileInfo {
 
 const Profile = () => {
     const [ profileInfo, setProfileInfo ] = useState<IProfileInfo | null>(null)
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
     const { register, handleSubmit } = useForm<UpdateProfileData>({
         resolver: zodResolver(UpdateProfileSchema)
@@ -34,12 +34,12 @@ const Profile = () => {
     }
 
     const openModal = () => {
-        setModalIsOpen(true);
-        };
+        setModalIsOpen(true)
+        }
         
         const closeModal = () => {
-            setModalIsOpen(false);
-        };
+            setModalIsOpen(false)
+        }
 
     useEffect(() => {
         async function getProfileInfo () {
