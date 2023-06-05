@@ -12,7 +12,7 @@
     align-items: center
     width: 50%
     height: 100%
-    background-color: red
+    background-color: #0d1122
 
 .right-container
     display: flex
@@ -21,22 +21,25 @@
     align-items: center
     width: 50%
     height: 100%
-    background-color: green
+    background-color: #0d1122
 
 .register-form-container
     display: flex
     flex-direction: column
     justify-content: space-evenly
     align-items: center
-    height: 70%
+    height: 80%
     width: 60%
-    background-color: blue
+    background-color: #0d1122
+    border: 2px solid #ddf5f4
+    border-radius: 1rem
 
 .register-title-container
     display: flex
     justify-content: center
     align-items: center
     width: 100%
+    color: #FFFFFF
 
 .register-input-container
     display: flex
@@ -44,20 +47,53 @@
     justify-content: center
     width: 70%
     gap: 1rem
+    color: #FFFFFF
+    > label
+        font-size: 1.5rem
 
 .register-input
     display: flex
     width: 60&
-    padding: 0.6rem
+    padding: 0.4rem
     border: none
     border-radius: 0.3rem
+    background-color: #ddf5f4
+    font-weight: 600
 
 .register-button-container
     display: flex
     justify-content: center
     align-items: center
     width: 100%
-    background-color: green
+
+.register-button
+    display: flex
+    padding: 1rem 2rem
+    background-color: #ddf5f4
+    border-radius: 0.5rem
+    font-weight: 800
+    &:hover
+        background-color: #48a9af
+        color: #FFFFFF
 
 .error-message
     color: red
+    font-size: 1.1rem
+
+.register-texts-container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    font-size: 1.2rem
+    color: #FFFFFF
+    gap: 1rem
+
+.tologin-button
+    padding: 0.5rem 1rem
+    font-weight: 600
+    border-radius: 0.5rem
+    background-color: #ddf5f4
+    &:hover
+        background-color: #48a9af
+        color: #FFFFFF

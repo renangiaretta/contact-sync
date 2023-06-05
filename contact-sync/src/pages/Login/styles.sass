@@ -12,7 +12,6 @@
     align-items: center
     width: 50%
     height: 100%
-    background-color: red
 
 .right-container
     display: flex
@@ -21,7 +20,6 @@
     align-items: center
     width: 50%
     height: 100%
-    background-color: green
 
 .login-form-container
     display: flex
@@ -30,13 +28,16 @@
     align-items: center
     height: 50%
     width: 40%
-    background-color: blue
+    color: #FFFFFF
+    border: 2px solid #ddf5f4
+    border-radius: 0.8rem
 
 .login-title-container
     display: flex
     justify-content: center
     align-items: center
     width: 100%
+    color: #FFFFFF
 
 .login-input-container
     display: flex
@@ -44,20 +45,53 @@
     justify-content: center
     width: 70%
     gap: 1rem
+    color: #FFFFFF
+    > label
+        font-size: 1.5rem
 
 .login-input
     display: flex
     width: 60&
-    padding: 0.6rem
+    padding: 0.4rem
     border: none
     border-radius: 0.3rem
+    background-color: #ddf5f4
+    font-weight: 600
 
 .login-button-container
     display: flex
     justify-content: center
     align-items: center
     width: 100%
-    background-color: green
 
-.error-message
+.login-button
+    display: flex
+    padding: 0.8rem 1.6rem
+    background-color: #ddf5f4
+    border-radius: 0.5rem
+    font-weight: 800
+    &:hover
+        background-color: #48a9af
+        color: #FFFFFF
+
+.error-messages
     color: red
+    font-size: 1.5rem
+
+.login-texts-container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    font-size: 1.2rem
+    color: #FFFFFF
+    gap: 0.7rem
+
+.toregister-button
+    padding: 0.3rem 0.6rem
+    font-weight: 600
+    border-radius: 0.3rem
+    background-color: #ddf5f4
+    &:hover
+        background-color: #48a9af
+        color: #FFFFFF

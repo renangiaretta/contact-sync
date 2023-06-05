@@ -1,28 +1,62 @@
 .home-profile
     display: flex
     width: 90%
-    background-color: red
+    background-color: #0d1122
+    color: #FFFFFF
 
 .profile-container
     display: flex
     flex-direction: column
-    // gap: 1rem
-    background-color: purple
+    gap: 1rem
+    padding-top: 2rem
 
 .modal-content
     display: flex
     flex-direction: column
     justify-content: center
     width: 30%
+    height: 55%
     position: fixed 
     right: auto
     bottom: auto
-    background-color: white
+    background-color: #ddf5f4
     border-radius: 8px
     padding: 20px
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
-    gap: 1rem
 
+.modal-input-container
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    margin-bottom: 1rem
+    > label
+        font-size: 1.3rem
+        font-weight: 600
+    > input
+        display: flex
+        width: 60&
+        padding: 0.5rem
+        border: none
+        border-radius: 0.3rem
+        font-weight: 600
+
+.modal-buttons-container
+    display: flex
+    justify-content: space-evenly
+    > button
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 0.5rem 1rem
+        margin-top: 1rem
+        width: 30%
+        background-color: #48a9af
+        border-radius: 0.5rem
+        font-weight: 800
+        color: #FFFFFF
+        &:hover
+            background-color: #0d1122
+            color: #FFFFFF
 .modal-overlay
     position: fixed
     top: 0
@@ -33,3 +67,12 @@
     justify-content: center
     align-items: center
     background-color: rgba(0, 0, 0, 0.5)
+
+.profile-edit-button
+    padding: 0.5rem 1rem
+    font-weight: 600
+    border-radius: 0.5rem
+    background-color: #ddf5f4
+    &:hover
+        background-color: #48a9af
+        color: #FFFFFF

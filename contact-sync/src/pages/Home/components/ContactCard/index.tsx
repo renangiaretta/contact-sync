@@ -4,6 +4,9 @@ import ReactModal from 'react-modal'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { UpdateContactData, UpdateContactSchema } from './schemas'
+import { MdOutlineContactPhone } from 'react-icons/md'
+import { AiOutlineMail } from 'react-icons/ai'
+import { AiTwotonePhone } from 'react-icons/ai'
 
 
 export interface IContact {
@@ -56,16 +59,18 @@ export interface IContact {
         <>
             <li className='contact-card-container'>
                 <div>
-                <h2>{contact.first_name} {contact.last_name}</h2>
+                <h2 className='contact-texts'><MdOutlineContactPhone/> {contact.first_name} {contact.last_name}</h2>
                 </div>
                 <div>
-                <h2>{contact.email}</h2>
+                <h2 className='contact-texts'><AiOutlineMail/> {contact.email}</h2>
                 </div>
                 <div>
-                <h2>{contact.phone}</h2>
+                <h2 className='contact-texts'><AiTwotonePhone/> {contact.phone}</h2>
                 </div>
-                <button onClick={openModal}>editar</button>
-                <button onClick={handleDelete}>deletar</button>
+                <div className='buttons-container'>
+                    <button onClick={openModal}>editar</button>
+                    <button onClick={handleDelete}>deletar</button>
+                </div>
             </li>
             <ReactModal
                 isOpen={modalIsOpen}
@@ -75,16 +80,26 @@ export interface IContact {
                 overlayClassName='modal-overlay'
             >
                 <form onSubmit={handleSubmit(updateContact)}>
-                <label htmlFor=''>Nome</label>
-                <input type='text' placeholder={contact.first_name} defaultValue={contact.first_name} {...register('first_name')} />
-                <label htmlFor=''>Sobrenome</label>
-                <input type='text' placeholder={contact.last_name} defaultValue={contact.last_name} {...register('last_name')} />
-                <label htmlFor=''>E-mail</label>
-                <input type='text' placeholder={contact.email} defaultValue={contact.email} {...register('email')} />
-                <label htmlFor=''>Telefone</label>
-                <input type='text' placeholder={contact.phone} defaultValue={contact.phone} {...register('phone')} />
-                <button onClick={closeModal}>Fechar</button>
-                <button type='submit'>Salvar</button>
+                <div className='modal-input-container'>
+                    <label htmlFor=''>Nome</label>
+                    <input type='text' placeholder={contact.first_name} defaultValue={contact.first_name} {...register('first_name')} />
+                </div>
+                <div className='modal-input-container'>
+                    <label htmlFor=''>Sobrenome</label>
+                    <input type='text' placeholder={contact.last_name} defaultValue={contact.last_name} {...register('last_name')} />
+                </div>
+                <div className='modal-input-container'>
+                    <label htmlFor=''>E-mail</label>
+                    <input type='text' placeholder={contact.email} defaultValue={contact.email} {...register('email')} />
+                </div>
+                <div className='modal-input-container'>
+                    <label htmlFor=''>Telefone</label>
+                    <input type='text' placeholder={contact.phone} defaultValue={contact.phone} {...register('phone')} />
+                </div>
+                <div className='modal-buttons-container'>
+                    <button onClick={closeModal}>Fechar</button>
+                    <button type='submit'>Salvar</button>
+                </div>
                 </form>
             </ReactModal>
         </>

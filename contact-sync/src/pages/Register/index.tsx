@@ -3,10 +3,15 @@ import './styles.sass'
 import { RegisterData, registerSchema } from './schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
+import contactSync from './../../assets/img/contact-sync.png'
 
 
 const Register = () => {
-
+    const navigate = useNavigate()
+    const toLogin = () => {
+        navigate('/')
+    }
     const { register, handleSubmit, formState: { errors } } = useForm<RegisterData>({
         resolver: zodResolver(registerSchema)
     })
@@ -14,6 +19,7 @@ const Register = () => {
     const registerCustomer = async (data: RegisterData) => {
         try {
             await api.post('customers/', data)
+            navigate('/')
         } catch (error) {
             console.error(error)
         }
@@ -54,10 +60,14 @@ const Register = () => {
                     <div className='register-button-container'>
                         <button className='register-button' type='submit'>CADASTRAR</button>
                     </div>
+                    <div className='register-texts-container'>
+                        <h3>Já possui uma conta?</h3>
+                        <button className='tologin-button' onClick={toLogin}>Login</button>
+                    </div>
                 </form>
             </div>
             <div className='right-container'>
-
+                <img src={contactSync} alt="" />
             </div>
         </main>
     )

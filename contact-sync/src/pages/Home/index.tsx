@@ -1,21 +1,24 @@
+import { useNavigate } from 'react-router-dom'
 import Contacts from './components/Contacts'
 import Profile from './components/Profile'
 import './styles.sass'
-
+import logo from './../../assets/img/contactsync-logo.png'
 
 const Home = () => {
-
+    const navigate = useNavigate()
+    const exit = () => {
+        localStorage.clear()
+        navigate('/')
+    }
     return (
         <>
             <header className='header'>
                 <div className='header-container'>
                     <div className='logo-container'>
-                        <h1>LOGO</h1>
+                        <img src={logo} alt="" />
                     </div>
                     <div className='customer-interactions-container'>
-                        <h2>PROFILE</h2>
-                        <h2>CONTATOS</h2>
-                        <h2>SAIR</h2>
+                        <button className='exit-button' onClick={exit}>SAIR</button>
                     </div>
                 </div>
             </header>

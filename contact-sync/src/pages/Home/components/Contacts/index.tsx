@@ -5,6 +5,7 @@ import ReactModal from 'react-modal'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AddContactData, AddContactSchema } from './schemas'
 import { useForm } from 'react-hook-form'
+import './styles.sass'
 
 
 interface IContactInfo {
@@ -18,7 +19,7 @@ const Contacts: React.FC = () => {
     const [ contacts, setContacts ] = useState<IContact[]>([])
     const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
-    const { register, handleSubmit } = useForm<AddContactData>({
+    const { register, handleSubmit, formState: { errors } } = useForm<AddContactData>({
         resolver: zodResolver(AddContactSchema)
     })
     async function getContacts() {
@@ -85,7 +86,7 @@ const Contacts: React.FC = () => {
     return (
         <>
             <div className='contacts-container'>
-                <button onClick={openModal}>Adicionar Contato</button>
+                <button className='add-contact-button' onClick={openModal}>Adicionar Contato</button>
                 <ul className='contacts-list'>
                 {contacts.map((contact: IContact) => (
                     <ContactCard
@@ -105,16 +106,28 @@ const Contacts: React.FC = () => {
                 overlayClassName='modal-overlay'
             >
                 <form onSubmit={handleSubmit(handleAddContact)}>
-                    <label htmlFor=''>Nome</label>
-                    <input type='text' placeholder='Digite o nome' {...register('first_name')} />
-                    <label htmlFor=''>Sobrenome</label>
-                    <input type='text' placeholder='Digite o sobrenome' {...register('last_name')} />
-                    <label htmlFor=''>E-mail</label>
-                    <input type='text' placeholder='Digite o telefone' {...register('email')} />
-                    <label htmlFor=''>Telefone</label>
-                    <input type='text' placeholder='Digite o telefone' {...register('phone')} />
-                    <button onClick={closeModal}>Fechar</button>
-                    <button type='submit'>Salvar</button>
+                    <div className='modal-input-container'>
+                        <label htmlFor=''>Nome</label>
+                        <input type='text' placeholder='Digite o nome' {...register('first_name')} />
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor=''>Sobrenome</label>
+                        <input type='text' placeholder='Digite o sobrenome' {...register('last_name')} />
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor=''>E-mail</label>
+                        {errors.email && <span className='error-message'>{errors.email.message}</span>}
+                        <input type='text' placeholder='Digite o telefone' {...register('email')} />
+                        
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor=''>Telefone</label>
+                        <input type='text' placeholder='Digite o telefone' {...register('phone')} />
+                    </div>
+                    <div className='modal-buttons-container'>
+                        <button onClick={closeModal}>Fechar</button>
+                        <button type='submit'>Salvar</button>
+                </div>
                 </form>
             </ReactModal>
         </>

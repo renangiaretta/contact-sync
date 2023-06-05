@@ -65,7 +65,7 @@ const Profile = () => {
                     <h2>{profileInfo.first_name} {profileInfo.last_name}</h2>
                     <h2>{profileInfo.email}</h2>
                     <h2>{profileInfo.phone}</h2>
-                    <button onClick={openModal} >Editar</button>
+                    <button className='profile-edit-button' onClick={openModal} >Editar</button>
                 </div>
             </div>
             <ReactModal
@@ -76,16 +76,26 @@ const Profile = () => {
                 overlayClassName="modal-overlay"
             >
                 <form onSubmit={handleSubmit(updateProfile)}>
-                    <label htmlFor="">Nome</label>
-                    <input type='text' placeholder={profileInfo.first_name} defaultValue={profileInfo.first_name} {...register('first_name')} />
-                    <label htmlFor="">Sobrenome</label>
-                    <input type='text' placeholder={profileInfo.last_name} defaultValue={profileInfo.last_name} {...register('last_name')} />
-                    <label htmlFor="">E-mail</label>
-                    <input type='text' placeholder={profileInfo.email} defaultValue={profileInfo.email} {...register('email')} />
-                    <label htmlFor="">Telefone</label>
-                    <input type='text' placeholder={profileInfo.phone} defaultValue={profileInfo.phone} {...register('phone')} />
-                    <button onClick={closeModal}>Fechar</button>
-                    <button type='submit'>Salvar</button>
+                    <div className='modal-input-container'>
+                        <label htmlFor="">Nome</label>
+                        <input type='text' placeholder={profileInfo.first_name} defaultValue={profileInfo.first_name} {...register('first_name')} />
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor="">Sobrenome</label>
+                        <input type='text' placeholder={profileInfo.last_name} defaultValue={profileInfo.last_name} {...register('last_name')} />
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor="">E-mail</label>
+                        <input type='text' placeholder={profileInfo.email} defaultValue={profileInfo.email} {...register('email')} />
+                    </div>
+                    <div className='modal-input-container'>
+                        <label htmlFor="">Telefone</label>
+                        <input type='text' placeholder={profileInfo.phone} defaultValue={profileInfo.phone} {...register('phone')} />
+                    </div>
+                    <div className='modal-buttons-container'>
+                        <button onClick={closeModal}>Fechar</button>
+                        <button type='submit'>Salvar</button>
+                    </div>
                 </form>
             </ReactModal>
         </>
