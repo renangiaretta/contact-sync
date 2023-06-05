@@ -1,4 +1,5 @@
 import Contacts from './components/Contacts'
+import Profile from './components/Profile'
 import './styles.sass'
 
 
@@ -19,6 +20,7 @@ const Home = () => {
                 </div>
             </header>
             <main className='home-main'>
+                <Profile />
                 <Contacts />
             </main>
         </>

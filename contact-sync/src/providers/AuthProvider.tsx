@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
         api.defaults.headers.authorization = `Bearer ${token}`
         setLoading(false)
-    }, [])
+    }, [loading])
 
     const signIn = async (data: LoginData) => {
         try {
