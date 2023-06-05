@@ -1,7 +1,9 @@
+import Contacts from './components/Contacts'
 import './styles.sass'
 
 
 const Home = () => {
+
     return (
         <>
             <header className='header'>
@@ -17,14 +19,7 @@ const Home = () => {
                 </div>
             </header>
             <main className='home-main'>
-                <div className='title-container'>
-                    <h1>CONTATOS</h1>
-                </div>
-                <div className='contacts-container'>
-                    <ul className='contacts-list'>
-
-                    </ul>
-                </div>
+                <Contacts />
             </main>
         </>
     )
