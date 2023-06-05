@@ -1,29 +1,46 @@
-import { ReactNode, createContext } from 'react'
-import { RegisterData } from '../pages/Register/schemas'
+import { ReactNode, createContext, useEffect, useState } from 'react'
 import { api } from '../services/api'
+import { useNavigate } from 'react-router-dom'
+import { LoginData } from '../pages/Login/schemas'
 
 
 interface AuthProviderProps {
     children: ReactNode
 }
 interface AuthContextValues {
-    registerCustomer: (data: RegisterData) => void
+    signIn: (data: LoginData) => void
+    loading: boolean
 }
 
 export const AuthContext = createContext<AuthContextValues>({} as AuthContextValues)
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const registerCustomer = async (data: RegisterData) => {
+    const navigate = useNavigate()
+    const [ loading, setLoading ] = useState(true)
+
+    useEffect(() => {
+        const token = localStorage.getItem('contact-sync:token')
+        if (!token) {
+            return
+        }
+        api.defaults.headers.authorization = `Bearer ${token}`
+        setLoading(false)
+    }, [])
+
+    const signIn = async (data: LoginData) => {
         try {
-            const response = api.post('/customers', data)
-            console.log(response)
+            const response = await api.post('/login', data)
+            const { token } = response.data
+            api.defaults.headers.authorization = `Bearer ${token}`
+            localStorage.setItem('contact-sync:token', token)
+            navigate('dashboard')
         } catch (error) {
             console.error(error)
         }
     }
 
     return (
-        <AuthContext.Provider value={{ registerCustomer }}>
+        <AuthContext.Provider value={{ signIn, loading }}>
             { children }
         </AuthContext.Provider>
     )
